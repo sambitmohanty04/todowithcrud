@@ -1,5 +1,6 @@
 import React from 'react'
-import Table from '../component/Table'
+// import Table from '../component/Table'
+import SortableTable from '../component/SortableTable'
 
 const TablePage = () => {
 
@@ -14,6 +15,7 @@ const TablePage = () => {
         {
             label: 'name',
             render: (fruit) => fruit.name,
+            sortValue : (fruit) => fruit.name
         },
         {
             label: 'color',
@@ -22,13 +24,13 @@ const TablePage = () => {
         {
             label: 'score',
             render: (fruit) => fruit.score,
-            header : () => <th className='bg-red-500'>Score</th>
+            sortValue : (fruit) => fruit.score
         }
     ]
     return (
         <>
             <div>
-                <Table data={data} config={config} />
+                <SortableTable data={data} config={config} />
             </div>
         </>
     )

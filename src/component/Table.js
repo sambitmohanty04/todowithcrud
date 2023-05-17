@@ -1,4 +1,5 @@
 import React from 'react'
+import { Fragment } from 'react'
 
 const Table = ({ data, config }) => {
 
@@ -20,7 +21,7 @@ const Table = ({ data, config }) => {
     const renderedHeader = config.map((column) => {
 
         if(column.header) {
-            return column.header();
+            return <Fragment key={column.label}>{column.header()}</Fragment>
         }
         return (
             <th key={column.label}>{column.label}</th>
