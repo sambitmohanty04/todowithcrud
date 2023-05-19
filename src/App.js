@@ -32,7 +32,7 @@ function App() {
           <Route path='/table'>
             <TablePage />
           </Route>
-          <Route path='/counter'>
+          <Route path='/count'>
             <CounterPage initialCount={10} />
           </Route>
         </div>

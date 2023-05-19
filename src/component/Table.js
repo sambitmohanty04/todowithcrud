@@ -1,32 +1,33 @@
 import React from 'react'
 import { Fragment } from 'react'
 
-const Table = ({ data, config }) => {
+const Table = ({ data, config, keyFn }) => {
 
-    const renderedFruit = data.map((fruit) => {
-        // return <tr key={fruit.name}>
-        //     <td className='p-3'>{fruit.name}</td>
-        //     <td className='p-3'>
-        //         <div className={`p-3 m-2 ${fruit.color}`}></div>
-        //     </td>
-        //     <td className='p-3'>{fruit.score}</td>
-        // </tr>
-        const renderCells = config.map((column) => {
-            return <td>{column.render(fruit)}</td>
-        })
-
-        return <tr className='border-b'>{renderCells}</tr>
-    })
-
-    const renderedHeader = config.map((column) => {
-
-        if(column.header) {
-            return <Fragment key={column.label}>{column.header()}</Fragment>
+    const renderedHeaders = config.map((column) => {
+        if (column.header) {
+          return <Fragment key={column.label}>{column.header()}</Fragment>;
         }
+    
+        return <th key={column.label}>{column.label}</th>;
+      });
+    
+      const renderedRows = data.map((rowData) => {
+        const renderedCells = config.map((column) => {
+          return (
+            <td className="p-2" key={column.label}>
+              {column.render(rowData)}
+            </td>
+          );
+        });
+    
         return (
-            <th key={column.label}>{column.label}</th>
-        )
-    })
+          <tr className="border-b" key={keyFn(rowData)}>
+            {renderedCells}
+          </tr>
+        );
+      });
+
+
 
     return (
         <>
@@ -34,11 +35,11 @@ const Table = ({ data, config }) => {
                 <table className='table-auto border-spacing-2'>
                     <thead>
                         <tr className='border-b-2'>
-                            {renderedHeader}
+                            {renderedHeaders}
                         </tr>
                     </thead>
                     <tbody>
-                        {renderedFruit}
+                        {renderedRows}
                     </tbody>
                 </table>
             </div>

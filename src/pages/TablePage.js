@@ -15,7 +15,7 @@ const TablePage = () => {
         {
             label: 'name',
             render: (fruit) => fruit.name,
-            sortValue : (fruit) => fruit.name
+            sortValue: (fruit) => fruit.name
         },
         {
             label: 'color',
@@ -24,13 +24,17 @@ const TablePage = () => {
         {
             label: 'score',
             render: (fruit) => fruit.score,
-            sortValue : (fruit) => fruit.score
+            sortValue: (fruit) => fruit.score
         }
     ]
+    const keyFn = (fruit) => {
+        return fruit.name;
+    };
+
     return (
         <>
             <div>
-                <SortableTable data={data} config={config} />
+                <SortableTable data={data} config={config} keyFn={keyFn} />
             </div>
         </>
     )
