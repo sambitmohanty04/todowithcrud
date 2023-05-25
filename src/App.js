@@ -1,4 +1,5 @@
 import './App.css';
+import db from './db.json'
 
 import Sidebar from './component/Sidebar';
 import Route from './component/Route';
