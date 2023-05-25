@@ -2,8 +2,30 @@ import React, { useReducer, useState } from 'react'
 // import Button from '../component/Button'
 // import useCounter from '../hooks/use-counter'
 
+
+const INCREMENT_COUNT = 'increment';
+const DECREMENT_COUNT = 'decrement';
+const ADD_TO_VALUE = 'add-to-value';
+
 const reducer = (state, action) => {
-    return
+    if (action.type === INCREMENT_COUNT) {
+        return {
+            ...state,
+            count : state.count+1
+        }
+    } 
+    if (action.type === DECREMENT_COUNT) {
+        return {
+            ...state,
+            count : state.count-1
+        }
+    }
+    if(action.type === ADD_TO_VALUE) {
+        return {
+            ...state,
+            addValue : action.payload
+        }
+    }
 }
 
 const CounterPage = ({ initialCount }) => {
@@ -14,20 +36,28 @@ const CounterPage = ({ initialCount }) => {
 
     const [state, dispatch] = useReducer(reducer, {
         count: initialCount,
-        addValue : 0
+        addValue: 0
     })
     console.log(state)
     const increment = () => {
-        // setCount(count + 1);
+        dispatch({
+            type: INCREMENT_COUNT
+        });
     }
     const decrement = () => {
-        // setCount(count - 1);
+        dispatch({
+            type: 'decrement'
+        });
     }
 
     const handleChange = (e) => {
-        const value = parseInt(e.target.value) || 0 ;
+        const value = parseInt(e.target.value) || 0;
         // console.log(typeof value)
         // setAddValue(value)
+        dispatch ({
+            type : ADD_TO_VALUE,
+            payload : value
+        })
     }
 
     const handleSubmit = (e) => {
@@ -50,9 +80,9 @@ const CounterPage = ({ initialCount }) => {
                 <form className='mt-3' onSubmit={handleSubmit}>
                     <label className='mr-3'>Add a number</label>
                     <input type='number'
-                    value={state.addValue || ''}
-                    onChange={handleChange}
-                    className='border-black-500 bg-gray-300 addCounterfotm' />
+                        value={state.addValue || ''}
+                        onChange={handleChange}
+                        className='border-black-500 bg-gray-300 addCounterfotm' />
                     <button type='submit' className='btn btn-primary ml-2'>Add it</button>
                 </form>
             </div>

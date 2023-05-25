@@ -9,6 +9,7 @@ import ModalPage from './pages/ModalPage';
 import ButtonPage from './pages/ButtonPage';
 import TablePage from './pages/TablePage';
 import CounterPage from './pages/CounterPage';
+import ToDo from './pages/ToDo';
 
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path='/count'>
             <CounterPage initialCount={10} />
+          </Route>
+          <Route path='/todo'>
+            <ToDo />
           </Route>
         </div>
       </div>
