@@ -21,7 +21,7 @@ const ToDo = () => {
                 ))}
                 
             </div> 
-            <AddToDo />           
+            <AddToDo addTodo={addTodo} />           
         </div>
     </>
   )

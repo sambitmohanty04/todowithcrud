@@ -1,5 +1,5 @@
 import './App.css';
-import db from './db.json'
+// import db from './db.json'
 
 import Sidebar from './component/Sidebar';
 import Route from './component/Route';
@@ -10,7 +10,7 @@ import ModalPage from './pages/ModalPage';
 import ButtonPage from './pages/ButtonPage';
 import TablePage from './pages/TablePage';
 import CounterPage from './pages/CounterPage';
-import ToDo from './pages/ToDo';
+// import ToDo from './pages/ToDo';
 
 
 function App() {
@@ -37,9 +37,9 @@ function App() {
           <Route path='/count'>
             <CounterPage initialCount={10} />
           </Route>
-          <Route path='/todo'>
+          {/* <Route path='/todo'>
             <ToDo />
-          </Route>
+          </Route> */}
         </div>
       </div>
     </>
