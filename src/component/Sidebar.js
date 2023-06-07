@@ -11,6 +11,7 @@ const Sidebar = () => {
         {label : 'Table', path:'/table'},
         {label : 'Counter', path:'/count'},
         {label : 'Todo', path:'/todo'},
+        {label : 'ListPage', path:'/listPage'},
     ]
 
     const renderLinks = links.map((link)=>{
