@@ -33,12 +33,15 @@ const store = configureStore({
     }
 })
 
-const startingState = store.getState();
-console.log(JSON.stringify(startingState))
+export {store}
+export const {addSong} = songsSlice.actions;
 
-store.dispatch(
-    songsSlice.actions.addSong('some song')
-)
+// const startingState = store.getState();
+// console.log(JSON.stringify(startingState))
 
-const finalState = store.getState()
-console.log(JSON.stringify(finalState))
+// store.dispatch(
+//     songsSlice.actions.addSong('some song')
+// )
+
+// const finalState = store.getState()
+// console.log(JSON.stringify(finalState))

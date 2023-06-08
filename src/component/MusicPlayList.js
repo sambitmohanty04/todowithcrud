@@ -1,12 +1,18 @@
 import React from 'react'
 import {createRandomSong} from '../data'
+import { useDispatch } from 'react-redux';
+import { addSong } from '../store';
+
 
 const MusicPlayList = () => {
 
+    const dispatch = useDispatch();
+
     const musicPlayList = [];
 
-    const handleMusicAdd = () => {
-
+    const handleMusicAdd = (song) => {
+        const action = addSong(song);
+        dispatch(action)
     }
 
     const renderMusic = musicPlayList.map((music, index)=>{
